@@ -1,0 +1,69 @@
+@import url(cssreset.css);
+
+body {
+  background: rgb(69, 104, 220);
+}
+/* START hero header and floating circles */
+.hero-header {
+  background: linear-gradient(
+    117deg,
+    rgba(69, 104, 220, 1) 1%,
+    rgba(176, 106, 179, 1) 90%
+  );
+  width: 100%;
+  height: 200vh;
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.hero-header .floating-circle1,
+.hero-header .floating-circle2 {
+  display: inline-block;
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 100%;
+}
+.hero-header .floating-circle1 {
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 200px 200px #d620de73;
+}
+.hero-header .floating-circle2 {
+  top: 0;
+  left: 0;
+  box-shadow: 0 0 300px 200px #8798e4;
+}
+/* END hero header and floating circles */
+/*  */
+/* START stats section styles */
+.stats-wrapper {
+  width: 100%;
+  height: 200px;
+  backdrop-filter: blur(10px);
+  background-color: rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  padding: 30px;
+}
+.stat-wrapper {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+}
+.stat-wrapper .icon {
+  font-size: 40px;
+  color: rgba(0, 255, 98, 0.7);
+}
+
+.stat-wrapper .stat-num {
+  font-size: 25px;
+}
+/* END stats section styles */
+/*  */

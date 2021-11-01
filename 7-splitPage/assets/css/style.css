@@ -1,0 +1,84 @@
+@import url(cssreset.css);
+
+body {
+  background: rgba(69, 104, 220, 1);
+  color: #fff;
+}
+.container {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  background-color: #000;
+}
+.container .right {
+  background: url(../img/background2.jpg);
+}
+.container .left {
+  background: url(../img/WebDesign.jpg);
+}
+.container .half-page {
+  flex-basis: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-position: center;
+  background-size: cover;
+  white-space: nowrap;
+  transition: flex-basis 1s cubic-bezier(0.18, 0.89, 0.6, 1.1),
+    opacity 0.5s ease;
+}
+.container .half-page h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  text-align: center;
+  position: relative;
+}
+.container .half-page h2::after {
+  content: "";
+  display: block;
+  width: 0;
+  height: 4px;
+  position: absolute;
+  bottom: -0.8rem;
+  left: 0;
+  background-color: #fff;
+  transition: width 0.3s ease;
+}
+.container .half-page h2:hover::after {
+  width: 100%;
+}
+.container .half-page .btn {
+  display: block;
+  padding: 10px 15px;
+  border: 1px solid #fff;
+  background-color: rgb(11, 133, 204);
+  text-align: center;
+  position: relative;
+}
+.container .half-page .btn::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 0;
+  position: absolute;
+  bottom: 0rem;
+  left: 0;
+  background-color: #fff;
+  transition: height 0.3s ease;
+}
+.container .half-page .btn:hover::after {
+  height: 4px;
+}
+.half-page.active {
+  flex-basis: 85%;
+}
+.half-page.dead {
+  flex-basis: 20%;
+  opacity: 0.2;
+}
+@media screen and (max-width: 764px) {
+  .container {
+    flex-direction: column;
+  }
+}

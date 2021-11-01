@@ -1,0 +1,39 @@
+@import url(cssreset.css);
+
+body {
+  background: rgb(255, 255, 255);
+}
+
+.accordin-menu {
+  max-width: 600px;
+  margin: 100px auto;
+  border: 1px solid rgb(9, 103, 211);
+}
+.accordin-menu .item:not(:last-child) {
+  border-bottom: 1px solid white;
+}
+.accordin-menu .item .heading {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: white;
+  padding: 20px 10px;
+  background-color: rgb(9, 103, 211);
+  cursor: pointer;
+}
+.accordin-menu .item .content {
+  font-size: 15px;
+  line-height: 1.5;
+  padding: 10px;
+  justify-content: right;
+  overflow: hidden;
+  display: none;
+}
+.accordin-menu .item .heading i {
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+.accordin-menu .item.open .heading i {
+  transform: rotate(-180deg);
+  color: rgb(255, 208, 0);
+}

@@ -1,0 +1,205 @@
+@import url(cssreset.css);
+
+body {
+  background: rgb(41, 41, 41);
+}
+/*  */
+/* START Card Styles */
+.fa-before::before {
+  display: inline-block;
+  width: 1.5rem;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  font-family: "Font Awesome 5 Free";
+
+  transition: color 0.3s ease;
+}
+
+.card {
+  width: 100%;
+  background-color: #efefef;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 5px;
+}
+.card .meta {
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  color: white;
+}
+.card .meta .info {
+  height: 100%;
+  padding: 30px 10px;
+  transition: transform 0.3s ease;
+  transform: translateX(300%);
+}
+.card:hover .meta .info {
+  transform: translateY(0);
+}
+.card .meta .info .author::before {
+  content: "\f2bd";
+  font-weight: 900;
+}
+.card .meta .info .date::before {
+  content: "\f073";
+  font-weight: 900;
+}
+.card .meta .info .tags::before {
+  content: "\f02b";
+  font-weight: 900;
+}
+.card a {
+  transition: background-color 0.3s ease;
+}
+.card .meta .info > * {
+  margin: 3px 0;
+  font-size: 14px;
+  display: block;
+}
+.card .info .tags > .tag {
+  display: inline-block;
+  padding: 2px 3px;
+  margin: 2px 2px;
+  border-radius: 3px;
+  background-color: #0c7daa;
+}
+.card .info .tags > .tag:hover {
+  background-color: #01b6fd;
+}
+.card .info .author:hover,
+.card .info .date:hover {
+  color: #91dffd;
+}
+.card .meta .photo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-image: url(../img/code-img.jpg);
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: darken;
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.card:hover .meta .photo {
+  transform: scale(1.2) rotate(-2deg);
+  background-color: #0008;
+}
+.card .body {
+  padding: 15px;
+  flex-grow: 1;
+  position: relative;
+  z-index: 2;
+  transition: flex-basis 0.3s ease;
+}
+.card .body .title {
+  margin-bottom: 10px;
+  font-size: 18px;
+}
+.card .body .subtitle {
+  padding-bottom: 15px;
+  font-size: 15px;
+  color: rgb(97, 97, 97);
+  font-weight: 400;
+  border-bottom: 1px solid #dadada;
+}
+.card .body .subtitle::before {
+  content: "";
+  display: inline-block;
+  width: 5px;
+  height: 1rem;
+  background-color: #0c7daa;
+  border-radius: 3px;
+  vertical-align: middle;
+  margin: 0 10px;
+}
+.card .body p {
+  margin: 15px 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: rgb(114, 114, 114);
+}
+.card .body .read-more {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: inline-block;
+  padding: 5px 15px;
+  font-size: 14px;
+  background-color: #0c7daa;
+  color: #fff;
+  border-radius: 0 5px 0 0;
+}
+.card .body .read-more:hover {
+  background-color: #01b6fd;
+}
+
+@media screen and (min-width: 576px) {
+  .card.card-responive {
+    flex-direction: row;
+  }
+  .card.card-responive .body {
+    flex-grow: 2;
+    flex-basis: 300%;
+  }
+  .card.card-responive .meta {
+    flex-shrink: 1;
+    flex-basis: 50%;
+  }
+  .card.card-responive .info > * {
+    white-space: nowrap;
+  }
+  .card.card-responive .info .tags {
+    display: flex;
+    flex-direction: column;
+    align-content: space-between;
+    justify-content: center;
+    align-items: flex-start;
+  }
+  .card.card-responive .body::before {
+    content: "";
+    display: inline-block;
+    height: 100%;
+    width: 40px;
+    position: absolute;
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    transform: scale(1.2) rotate(4deg);
+    z-index: -1;
+    background-color: #efefef;
+  }
+  .card.card-responive:hover .body {
+    flex-basis: 170%;
+    /* if your content looks messy reduce or increase this property */
+    /* also you can add more breakpoints for more control */
+  }
+}
+/* END Card Styles */
+
+/* regular card styles */
+.regular-container {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex;
+  gap: 15px;
+}
+@media screen and (max-width: 576px) {
+  .regular-container {
+    flex-direction: column;
+  }
+}
+
+/* doc styles */
+h2.doc-descs {
+  margin-top: 100px;
+  padding: 20px 40px;
+  color: white;
+}

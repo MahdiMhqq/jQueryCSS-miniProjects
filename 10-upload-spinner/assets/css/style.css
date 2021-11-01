@@ -1,0 +1,262 @@
+@import url(cssreset.css);
+
+body {
+  background: rgb(41, 41, 41);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.spinner {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  border-radius: 100%;
+  transform-origin: 50% 60%;
+  transform: perspective(200px) rotateX(70deg);
+}
+
+.spinner::after,
+.spinner::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  border-radius: 100%;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  transition: 0.3s ease-out;
+}
+
+/* uploading */
+.spinner.uploading::after,
+.spinner.uploading::before {
+  border-bottom: 7px solid;
+  filter: blur(1px);
+}
+
+.spinner.uploading::after {
+  border-bottom-color: rgb(255, 208, 0);
+  transform: rotate3d(0, 1, 1, 103deg);
+  box-shadow: -1px 16px 5px -15px rgb(255, 208, 0);
+  animation: spin-uploding-first 0.5s infinite;
+}
+
+.spinner.uploading::before {
+  border-bottom-color: rgb(255, 10, 145);
+  transform: rotate3d(1, 1, 0, 45deg);
+  box-shadow: 3px 13px 10px -15px rgb(255, 10, 145);
+  animation: spin-uploding-second 0.7s infinite;
+}
+
+@keyframes spin-uploding-first {
+  0% {
+    opacity: 0;
+    transform: rotate3d(0, 1, 1, 103deg) rotate(0deg);
+  }
+  20% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0;
+
+    transform: rotate3d(0, 1, 1, 103deg) rotate(360deg);
+  }
+}
+
+@keyframes spin-uploding-second {
+  0% {
+    opacity: 0;
+    transform: rotate3d(1, 1, 0, 45deg) rotate(0deg);
+  }
+  20% {
+    opacity: 0.05;
+  }
+  50% {
+    opacity: 1;
+  }
+  80% {
+    opacity: 0.05;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate3d(1, 1, 0, 45deg) rotate(360deg);
+  }
+}
+/* waiting */
+.spinner.waiting::after,
+.spinner.waiting::before {
+  border: 7px solid;
+}
+.spinner.waiting::after {
+  border-color: rgb(43, 128, 255);
+  box-shadow: -1px 16px 5px -15px rgb(43, 128, 255);
+  animation: spin-waiting-first 2s infinite;
+}
+
+.spinner.waiting::before {
+  border-color: rgb(238, 41, 172);
+  box-shadow: 3px 13px 10px -15px rgb(238, 41, 172);
+  animation: spin-waiting-second 2s infinite;
+}
+
+@keyframes spin-waiting-first {
+  0% {
+    transform: scale(0.95);
+  }
+  50% {
+    transform: scale(1.07);
+  }
+  100% {
+    transform: scale(0.95);
+  }
+}
+@keyframes spin-waiting-second {
+  100% {
+    transform: scale(1.02);
+  }
+  50% {
+    transform: scale(0.9);
+  }
+  0% {
+    transform: scale(1.02);
+  }
+}
+/* done */
+.spinner.done {
+  border: 5px solid greenyellow;
+  box-shadow: 0px 7px 13px -5px greenyellow;
+  animation: spinner-done 5s infinite;
+}
+@keyframes spinner-done {
+  50% {
+    box-shadow: 0px 7px 5px -5px greenyellow;
+  }
+}
+/* sign */
+.sign {
+  opacity: 0;
+  width: 50px;
+  height: 120px;
+  position: relative;
+  margin-bottom: -100px;
+  transition: 0.5s ease-in-out;
+}
+/* sign info*/
+.sign.info {
+  opacity: 1;
+  transform: translateY(0);
+}
+.sign.info::after,
+.sign.info::before {
+  content: "";
+  position: absolute;
+  display: inline-block;
+  width: 4px;
+  background-color: cyan;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+}
+
+.sign.info::after {
+  height: 90px;
+  top: 0;
+}
+.sign.info::before {
+  height: 15px;
+  bottom: 0;
+}
+/* sign done*/
+.sign.done {
+  opacity: 1;
+  transform-origin: top left;
+  transform: scaleY(-1) rotate(315deg) translateY(0);
+  transition: none;
+  display: none;
+}
+.sign.done::after {
+  content: "";
+  position: absolute;
+  display: block;
+  opacity: 1;
+  width: 100%;
+  height: 100%;
+  top: -90px;
+  left: 63px;
+  border-right: 4px solid greenyellow;
+  border-top: 4px solid greenyellow;
+}
+
+/* button style */
+.btn {
+  margin-top: 100px;
+  font-weight: bold;
+  position: relative;
+  outline: none;
+  border: none;
+  overflow: hidden;
+  width: 150px;
+  height: 60px;
+  cursor: pointer;
+}
+.btn span {
+  font-size: 24px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: left 0.3s ease-out;
+}
+.btn span:nth-child(1) {
+  background-color: rgb(24, 158, 69);
+  color: white;
+}
+.btn span:nth-child(2) {
+  background-color: rgb(212, 66, 66);
+  color: white;
+}
+.btn span:nth-child(3) {
+  background-color: rgb(9, 80, 173);
+  color: white;
+}
+
+.btn.start span:nth-child(1) {
+  left: 0;
+}
+.btn.start span:nth-child(2),
+.btn.start span:nth-child(3) {
+  left: -100%;
+}
+
+.btn.end span:nth-child(1) {
+  left: 100%;
+}
+.btn.end span:nth-child(2) {
+  left: 0;
+}
+.btn.end span:nth-child(3) {
+  left: -100%;
+}
+
+.btn.again span:nth-child(2),
+.btn.again span:nth-child(1) {
+  left: 100%;
+}
+.btn.again span:nth-child(3) {
+  left: 0;
+}
